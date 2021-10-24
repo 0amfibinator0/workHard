@@ -1,13 +1,31 @@
-let number = 266219;
-let string = String(number); // превратили число в строку
-let array = string.split(''); // превратили строку в массив
-let answer = array[0] * array[1] * array[2] * array[3] * array[4] * array[5];
+let lang = '';
 
-console.log(answer);
+if (lang === 'ru') {
+    console.log('понедельник, вторник, среда, четверг, пятница, суббота, воскресенье');
+} else if (lang === 'en') {
+    console.log('Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday');
+}
 
-let num = answer ** 3; // возводим степень
-console.log(num);
-let rezult = String(num);
-let arr = rezult.split('');
+switch (lang) {
+    case 'ru':
+        console.log('понедельник, вторник, среда, четверг, пятница, суббота, воскресенье');
+        break;
+    case 'en':
+        console.log('Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday');
+        break;
+}
 
-console.log(arr[0], arr[1]);
+const arrLang = {
+    ru: () => {
+        console.log('понедельник, вторник, среда, четверг, пятница, суббота, воскресенье');
+    },
+    en: () => {
+        console.log('Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday');
+    }
+};
+
+let namePerson = prompt('Ваше имя');
+let checkNamePerson = namePerson === 'Артем' ? console.log('директор') :
+namePerson === 'Александр' ? console.log('преподаватель') :
+console.log('студент');
+console.log(checkNamePerson);
