@@ -1,13 +1,14 @@
-let number = 266219;
-let string = String(number); // превратили число в строку
-let array = string.split(''); // превратили строку в массив
-let answer = array[0] * array[1] * array[2] * array[3] * array[4] * array[5];
+let isString = (str) => {
+    return (!parseFloat(str) && str !== null && str !== '') ? true : false;
+};
+let func = (arg) => {
+    do {
+        arg = prompt('введите строку');
+    } while(!isString(arg));
+    let str = arg.trim();
+    if(str.length > 30) {
+        str = str.substr(0, 30) + '...';
+    }
+};
 
-console.log(answer);
-
-let num = answer ** 3; // возводим степень
-console.log(num);
-let rezult = String(num);
-let arr = rezult.split('');
-
-console.log(arr[0], arr[1]);
+func();
