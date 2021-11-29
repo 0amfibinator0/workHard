@@ -1,13 +1,23 @@
-let number = 266219;
-let string = String(number); // превратили число в строку
-let array = string.split(''); // превратили строку в массив
-let answer = array[0] * array[1] * array[2] * array[3] * array[4] * array[5];
 
-console.log(answer);
+const text = document.getElementById('text');
+let arr = ['20', '60', '42', '78', '31', '45', '58'];
 
-let num = answer ** 3; // возводим степень
-console.log(num);
-let rezult = String(num);
-let arr = rezult.split('');
+arr.forEach((el) => {
+    if (el.startsWith('2') || el.startsWith('4')) {
+        console.log(el);
+    }
+});
 
-console.log(arr[0], arr[1]);
+for (let x = 1; x <101; x++) {
+    let y = 0;
+    for (let i = 1; i <= x; i++) {
+        if (x % i == 0) {
+            y++;
+        }
+    }
+    if (y <= 2) {
+        const div = document.createElement("div");
+        div.textContent = `${x} 1;${x}`;
+        document.body.append(div);
+    }
+}
