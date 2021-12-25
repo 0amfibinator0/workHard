@@ -1,13 +1,31 @@
-let number = 266219;
-let string = String(number); // превратили число в строку
-let array = string.split(''); // превратили строку в массив
-let answer = array[0] * array[1] * array[2] * array[3] * array[4] * array[5];
+const div = document.createElement("div");
+const dove = document.createElement("div");
 
-console.log(answer);
+setInterval(function(){
+    let week = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+    let monthes = ['Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября', 'Ноября', 'Декабря'];
+    let date = new Date();
+    let day = date.getUTCDay();
+    let month = date.getMonth();
+    let hour;
 
-let num = answer ** 3; // возводим степень
-console.log(num);
-let rezult = String(num);
-let arr = rezult.split('');
+    if (date.getHours() >= 2 && date.getHours() <= 4) {
+        hour = "часа";
+    } else if (date.getHours() >= 5 && date.getHours() <= 20) {
+        hour = "часов";
+    }else if (date.getHours() >= 22 && date.getHours() <= 24) {
+        hour = "часа";
+    } else {
+        hour = "час";
+    }
 
-console.log(arr[0], arr[1]);
+    div.textContent = `Сегодня ${week[day]}, ${date.getDate()} ${monthes[month]} ${date.getFullYear()} года, ${date.getHours()} ${hour} ${date.getMinutes()} минут ${date.getSeconds()} секунды`;
+},1000);
+setInterval(function() {
+    const date = new Date();
+
+    dove.textContent = `${new Intl.DateTimeFormat().format(date)} - ${date.toLocaleTimeString()}`;
+},1000);
+
+document.body.append(div);
+document.body.append(dove);
