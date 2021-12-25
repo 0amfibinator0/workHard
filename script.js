@@ -1,12 +1,17 @@
-let week = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+let week = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
 let date = new Date();
+let day = date.getUTCDay() - 1;
+
+if (day < 0) {
+    day = 6;
+}
 
 for (let i = 0; i < week.length; i++) {
     const div = document.createElement("div");
-    if (i === 0 || i === 6) {
+    if (i === 5 || i === 6) {
         div.style.fontStyle = "italic";
     }
-    if ( i === date.getDay() ) {
+    if ( i === day ) {
         div.style.fontWeight = "bolder";
     }
     div.textContent = week[i];
