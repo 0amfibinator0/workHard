@@ -1,7 +1,7 @@
 const select = document.getElementById('cars');
 const info = document.getElementById('info');
 
-let fisrtcommit;
+let firstcommit;
 let secondcommit;
 
 async function getData() {
@@ -13,28 +13,43 @@ async function getData() {
 			alert('ошибочка вышла');
 		});
 
+		commits.cars.forEach((el) => {
+			console.log(el);
+			const option = document.createElement('option');
+			option.textContent = el.brand;
+			option.value = el.brand;
+			select.append(option);
+		});
+		
+		select.addEventListener('change', () => {
+			if (select.selectedIndex.value === 1) {
+				console.log(1);
+			} else if (select.selectedIndex === 2) {
+				console.log(2);
+			}
+		});
 
-	fisrtcommit = commits.cars[0];
-	secondcommit = commits.cars[1];
+	// fisrtcommit = commits.cars[0];
+	// secondcommit = commits.cars[1];
 
-	console.log(commits.cars[0]);
-	console.log(commits.cars[0].brand);
-	console.log(commits.cars[1]);
-	console.log(commits.cars[1].model);
+	// console.log(commits.cars[0]);
+	// console.log(commits.cars[0].brand);
+	// console.log(commits.cars[1]);
+	// console.log(commits.cars[1].model);
 
-	select.addEventListener('change', () => {
-		if (select.selectedIndex === 1) {
-			console.log(1);
-			fisrtcommit.forEach((el) => {
-				info.innerHTML += "<p>" + el + "</p>";
-			});
-		} else if (select.selectedIndex === 2) {
-			console.log(2);
-			secondcommit.forEach((el) => {
-				info.innerHTML += "<p>" + el + "</p>";
-			});
-		}
-	});
+	// select.addEventListener('change', () => {
+	// 	if (select.selectedIndex === 1) {
+	// 		console.log(1);
+	// 		fisrtcommit.forEach((el) => {
+	// 			info.innerHTML += "<p>" + el + "</p>";
+	// 		});
+	// 	} else if (select.selectedIndex === 2) {
+	// 		console.log(2);
+	// 		secondcommit.forEach((el) => {
+	// 			info.innerHTML += "<p>" + el + "</p>";
+	// 		});
+	// 	}
+	// });
 }
 
 getData();
