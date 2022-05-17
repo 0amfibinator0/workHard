@@ -1,8 +1,15 @@
 const select = document.getElementById('cars');
 const info = document.getElementById('info');
+const body = document.querySelector('body');
+const div = document.createElement('div');
 
-let firstcommit;
-let secondcommit;
+let firstCommit;
+let secondCommit;
+
+const customizationDiv = () => {
+	div.classList.add('info');
+	body.append(div);
+};
 
 async function getData() {
 	const commits = await fetch('https://bfs01.getcourse.ru/public/files/12250/88/84120897322424565eb4cddeea2b910a.json?e=1652648399&s=Z7u0ZeUAF00tolbNlIPwBQ')
@@ -13,44 +20,32 @@ async function getData() {
 			alert('ошибочка вышла');
 		});
 
-		commits.cars.forEach((el) => {
-			console.log(el);
-			const option = document.createElement('option');
-			option.textContent = el.brand;
-			option.value = el.brand;
-			select.append(option);
-		});
-		
-		select.addEventListener('change', () => {
-			if (select.selectedIndex.value === 1) {
-				console.log(1);
-			} else if (select.selectedIndex === 2) {
-				console.log(2);
+	commits.cars.forEach((el) => {
+		const option = document.createElement('option');
+		option.textContent = el.brand;
+		option.value = el.brand;
+		select.append(option);
+		if (option.value === 'bmw') {
+			firstCommit = el;
+		} else if (option.value === 'volvo') {
+			secondCommit = el;
+		}
+	});
+
+	select.addEventListener('change', () => {
+		if (select.options[select.selectedIndex].value === firstCommit.brand) {
+			div.textContent = '';
+			for (let key in firstCommit) {
+				div.innerHTML += '<p>' + key + ': ' + firstCommit[key] + '</p>';
 			}
-		});
-
-	// fisrtcommit = commits.cars[0];
-	// secondcommit = commits.cars[1];
-
-	// console.log(commits.cars[0]);
-	// console.log(commits.cars[0].brand);
-	// console.log(commits.cars[1]);
-	// console.log(commits.cars[1].model);
-
-	// select.addEventListener('change', () => {
-	// 	if (select.selectedIndex === 1) {
-	// 		console.log(1);
-	// 		fisrtcommit.forEach((el) => {
-	// 			info.innerHTML += "<p>" + el + "</p>";
-	// 		});
-	// 	} else if (select.selectedIndex === 2) {
-	// 		console.log(2);
-	// 		secondcommit.forEach((el) => {
-	// 			info.innerHTML += "<p>" + el + "</p>";
-	// 		});
-	// 	}
-	// });
+		} else if (select.options[select.selectedIndex].value === secondCommit.brand) {
+			div.textContent = '';
+			for (let key in secondCommit) {
+				div.innerHTML += '<p>' + key + ': ' + secondCommit[key] + '</p>';
+			}
+		}
+	});
 }
 
+customizationDiv();
 getData();
-
