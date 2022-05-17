@@ -1,5 +1,4 @@
 const select = document.getElementById('cars');
-const info = document.getElementById('info');
 const body = document.querySelector('body');
 const div = document.createElement('div');
 
@@ -12,7 +11,7 @@ const customizationDiv = () => {
 };
 
 async function getData() {
-	const commits = await fetch('https://bfs01.getcourse.ru/public/files/12250/88/84120897322424565eb4cddeea2b910a.json?e=1652648399&s=Z7u0ZeUAF00tolbNlIPwBQ')
+	const commits = await fetch('https://bfs01.getcourse.ru/public/files/12250/88/84120897322424565eb4cddeea2b910a.json?e=1652828399&s=uN-d2TZke4PtHhUMIsoRYQ')
         .then((response) => {
             return response.json();
         })
@@ -32,13 +31,13 @@ async function getData() {
 		}
 	});
 
-	select.addEventListener('change', () => {
-		if (select.options[select.selectedIndex].value === firstCommit.brand) {
+	select.addEventListener('change', ({target}) => {
+		if (target.value === firstCommit.brand) {
 			div.textContent = '';
 			for (let key in firstCommit) {
 				div.innerHTML += '<p>' + key + ': ' + firstCommit[key] + '</p>';
 			}
-		} else if (select.options[select.selectedIndex].value === secondCommit.brand) {
+		} else if (target.value === secondCommit.brand) {
 			div.textContent = '';
 			for (let key in secondCommit) {
 				div.innerHTML += '<p>' + key + ': ' + secondCommit[key] + '</p>';
