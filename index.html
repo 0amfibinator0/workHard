@@ -6,17 +6,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <script src="./script.js" defer></script>
     <title>Document</title>
 </head>
 
 <body>
-    <form name="f1">
-        Ваш пол:<br>
-        <input type="radio" name="r1" id="id1">м<br>
-        <input type="radio" name="r1" id="id2">ж<br>
-        <input type="button" onclick="fanc()">
-        </form>
+    <div class="convertation">
+        <div class="convert-there">
+            <input id="input" value="1" type="num">
+            <select id="money">
+                <option value="USD">Доллар США</option>
+                <option value="EUR">Евро Евреи</option>
+                <option value="USD">Российский Рубль</option>
+            </select>
+        </div>
+        <div class="convert-back">
+            <input id="input" disabled>
+            <select id="money-second">
+                <option value="USD">Российский Рубль</option>
+                <option value="USD">Доллар США</option>
+                <option value="EUR">Евро Евреи</option>
+            </select>
+        </div>
+    </div>
 </body>
 
 </html>
