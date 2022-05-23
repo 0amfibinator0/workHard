@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
 }
-#money {
+.money {
     margin-left: 6px;
     margin-top: 10px;
     background: transparent;

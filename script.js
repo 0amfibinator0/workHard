@@ -1,22 +1,40 @@
+const firstSelect = document.getElementById('first-select');
+const firstInput = document.getElementById('first-input');
+const secondSelect = document.getElementById('second-select');
+const secondInput = document.getElementById('second-input');
 const myHeaders = new Headers();
-myHeaders.append("apikey", "waW3EyqLNvabS2Buy3DvZyxjDFfRPgjY");
+myHeaders.append("apikey", "GYJCAGYC5yRCTxujemFX8Qg7pedYZlUo");
 
-let to = 'RUB';
 let from = 'USD';
+let to = 'RUB';
 let amount = 1;
 
 async function getData () {
-    const respons = await fetch(`https://api.apilayer.com/exchangerates_data/convert?to=${to}&from=${from}&amount=${amount}`, {
+    const response = await fetch(`https://api.apilayer.com/exchangerates_data/convert?to=${to}&from=${from}&amount=${amount}`, {
         method: 'GET',
         redirect: 'follow',
         headers: myHeaders
     })
-    .then(response => response.text())
+    .then(response => response.json())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
-    console.log(respons);
+    console.log(response);
 }
 getData();
+
+
+
+
+
+
+
+// firstSelect.addEventListener('change', ({target}) => {
+// from = target.value;
+// });
+// secondSelect.addEventListener('change', ({target}) => {
+//     to = target.value;
+// });
+
 // const select = document.getElementById('cars');
 // const body = document.querySelector('body');
 // const div = document.createElement('div');
