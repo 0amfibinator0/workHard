@@ -19,6 +19,12 @@ async function getData () {
     .then(result => secondInput.value = result.result)
     .catch(error => console.log('error', error));
 }
+firstInput.addEventListener('input', () => {
+    amount = firstInput.value;
+    from = firstSelect.value;
+    to = secondSelect.value;
+    getData();
+});
 firstSelect.addEventListener('change', ({target}) => {
     from = target.value;
     to = secondSelect.value;
@@ -29,6 +35,7 @@ secondSelect.addEventListener('change', ({target}) => {
     to = target.value;
     getData();
 });
+
 getData();
 
 
