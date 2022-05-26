@@ -1,10 +1,14 @@
 const mainDiv = document.querySelector('.list');
+const select = document.getElementById('select');
+
+const a = (el) => {
+    
+};
 
 async function getData() {
     return await fetch('dbHeroes.json')
         .then(response => response.json())
         .then((result) => {
-            console.log(1);
             result.forEach((el) => {
                 const div = document.createElement('div');
                 const img = document.createElement('img');
@@ -29,9 +33,18 @@ async function getData() {
                 status.classList.add('text');
                 status.textContent = el.status;
                 div.append(status);
+                el.movies.forEach((element) => {
+                    console.log(element);
+                    const option = document.createElement('option');
+                    option.textContent = element;
+                    option.value = element;
+                    select.append(option);
+                });
             });
         })
-        .catch(error => console.log('error', error));
-    
-}
-getData();
+        .catch(error => console.log('error', error));        
+    }
+    getData();
+    // select.addEventListener('change', ({target}) => {
+        
+    // });
