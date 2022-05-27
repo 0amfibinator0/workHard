@@ -26,6 +26,8 @@
 }
 .movies {
     text-align: center;
+    width: 90%;
+    margin: auto;
 }
 .movies-name {
     display: inline-block;
