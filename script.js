@@ -2,10 +2,10 @@ const mainDiv = document.querySelector('.list');
 const ul = document.querySelector('.movies');
 
 const filter = () => {
-    ul.addEventListener('click', (e) => {
-        if (e.target.tagName === 'LI') {
+    ul.addEventListener('click', ({target}) => {
+        if (target.tagName === 'LI') {
             const filterBox = document.querySelectorAll('.character');
-            let filterClass = e.target.textContent;
+            let filterClass = target.textContent;
             filterBox.forEach((el) => {
                 el.classList.remove('hide');
                 const elem = el.childNodes[3].textContent;
