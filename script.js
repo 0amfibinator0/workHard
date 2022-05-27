@@ -1,10 +1,21 @@
 const mainDiv = document.querySelector('.list');
-const select = document.getElementById('select');
+const ul = document.querySelector('.movies');
 
-const a = (el) => {
-    
+const filter = () => {
+    ul.addEventListener('click', (e) => {
+        if (e.target.tagName === 'LI') {
+            const filterBox = document.querySelectorAll('.character');
+            let filterClass = e.target.textContent;
+            filterBox.forEach((el) => {
+                el.classList.remove('hide');
+                const elem = el.childNodes[3].textContent;
+                if (elem.indexOf(filterClass) === -1 && filterClass !== 'ALL') {
+                    el.classList.add('hide');
+                }
+            });
+        }
+    });
 };
-
 async function getData() {
     return await fetch('dbHeroes.json')
         .then(response => response.json())
@@ -33,18 +44,9 @@ async function getData() {
                 status.classList.add('text');
                 status.textContent = el.status;
                 div.append(status);
-                el.movies.forEach((element) => {
-                    console.log(element);
-                    const option = document.createElement('option');
-                    option.textContent = element;
-                    option.value = element;
-                    select.append(option);
-                });
             });
         })
-        .catch(error => console.log('error', error));        
-    }
-    getData();
-    // select.addEventListener('change', ({target}) => {
-        
-    // });
+        .catch(error => console.log('error', error));  
+}
+getData();
+filter();

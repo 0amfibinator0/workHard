@@ -4,7 +4,6 @@
 .list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
 }
 .character {
     width: 300px;
@@ -13,6 +12,8 @@
     border: 2px solid #000;
     background: #ccc;
     margin-bottom: 20px;
+    margin-right: 10px;
+    float: left;
 }
 .img {
     max-width: 250px;
@@ -23,11 +24,17 @@
     max-width: 250px;
     border-bottom: 1px solid #000;
 }
+.movies {
+    text-align: center;
+}
+.movies-name {
+    display: inline-block;
+    cursor: pointer;
+    margin: 10px 30px 10px 0;
+    padding: 3px 7px;
+    border: 2px solid #000;
+    border-radius: 10px;    
+}
 .hide {
     display: none;
-}
-#select {
-    margin-bottom: 30px;
-    border: 2px solid #000;
-    border-radius: 10px;
 }
